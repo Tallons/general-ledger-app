@@ -1,0 +1,8 @@
+@import "./modules/mixins";
+
+.ledger-view-container {
+   @include column;
+   background-color: pink;
+   width: 100vw;
+   height: 100vh;
+}
