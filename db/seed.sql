@@ -1,4 +1,5 @@
 CREATE TABLE bank_accounts (
+    -- user_id INT REFERENCES users(user_id),
     bank_account_id SERIAL PRIMARY KEY,
     bank_account_name VARCHAR(50)
 );
