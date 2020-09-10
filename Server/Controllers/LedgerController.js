@@ -4,22 +4,20 @@ module.exports = {
       const {id, year} = req.query,
             db = req.app.get("db"),
             ledgerId = await db.get_ledger_id(id, year);
-            db.query(`SELECT * FROM ledger`).then(ledger => {
-               ledger.forEach(el =>{
-               el.ledger_date = `${el.ledger_date}`.substring(3,10)
+      db.query(`SELECT * FROM ledger`).then(ledger => {
+            ledger.forEach(el =>{
+            el.ledger_date = `${el.ledger_date}`.substring(3,10)
          })
          res.status(200).send({id: ledgerId[0].ledger_id, ledger});
-      }).catch(err => {
-         console.log(err);
-         res.status(500).send(err);
-      });
+      }).catch(err => res.status(500).send(err));
    },
 
    createLedger: async (req, res) => {
       const {id, year} = req.params,
       db = req.app.get("db");
       const ledgerId = await db.add_ledger(id, year)
-      db.create_ledger(`ledger_${ledgerId}`)
+      // db.create_ledger(`ledger_${ledgerId}`)
+      console.log(ledgerId)
       .then((ledger) => {
          res.status(200).send(ledger);
       }).catch(err => res.status(500).send(err));

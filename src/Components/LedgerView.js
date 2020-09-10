@@ -6,15 +6,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 
-const LedgerView = () => {
+const LedgerView = (props) => {
 
-   const [date, setDate] = useState( new Date()),
+   const [newLedger, setNewLedger] = useState(),
+      [date, setDate] = useState( new Date()),
       [ledgerEntries, setLedgerEntries] = useState(),
       [creditPrice, setCreditPrice] = useState(),
       [debitPrice, setDebitPrice] = useState(),
       [ledgerId, setLedgerId] = useState()
 
-   const [{bankAccountId, ledgerYear, credit, debit, vendorName, trxDescription, trxType, department, glAccount, note, journalRef}, setValues, resetValues] = useInput({bankAccountId: 100101, ledgerYear: 2019,  credit: "", debit: "", vendorName: "", trxDescription: "", trxType: "", department: "", glAccount: "", note: "", journalRef: ""})
+   const [{bankAccountId, ledgerYear, credit, debit, vendorName, trxDescription, trxType, glAccount, note, journalRef}, setValues, resetValues] = useInput({bankAccountId: 100101, ledgerYear: 2019,  credit: "", debit: "", vendorName: "", trxDescription: "", trxType: "", glAccount: "", note: "", journalRef: ""})
    const yearList = [2019, 2020, 2021]
  
    useEffect (() => {
@@ -43,20 +44,14 @@ const LedgerView = () => {
          alert("please enter all information");
       }
    }
-   
+   console.log(props);
+   console.log(props.match.params.id);
    return (
      <div className="ledger-view-container">
        <section>
-         <div>Your Ledger</div>
-           <input placeholder="Account ID" name="bankAccountId" value={bankAccountId} onChange={(e) => setValues(e)}/>
-           <select placeholder="Ledger Year" name="ledgerYear" onChange={(e) => setValues(e)}>
-           <option default > </option>
-               {yearList.map(el => (
-                 <option>{el}</option>
-                 ))}
-             </select>
-             {/* <button > Search</button> */}
-       </section>
+
+      </section>
+        
       { bankAccountId && ledgerYear ? (
       <>
          <div>
@@ -70,7 +65,6 @@ const LedgerView = () => {
                   <input placeholder="Vendor Name" name="vendorName" value={vendorName} onChange={(e) => setValues(e)}/>
                   <input placeholder=" Trx Description" name="trxDescription" value={trxDescription} onChange={(e) => setValues(e)}/>
                   <input placeholder="Transaction Type" name="trxType" value={trxType} onChange={(e) => setValues(e)}/>
-                  <input placeholder="Department" name="department" value={department} onChange={(e) => setValues(e)}/>
                   <input placeholder="GL Account" name="glAccount" value={glAccount} onChange={(e) => setValues(e)}/>
                   <button onClick={()=> addToLedger()}> ADD </button> 
          </div>

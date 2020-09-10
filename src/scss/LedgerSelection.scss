@@ -1,0 +1,108 @@
+@import "modules/mixins";
+@import "modules/variables";
+
+.ledger-selector-container {
+   @include column;
+   justify-content: flex-start;
+   background-color: $pal-seven;
+   box-shadow: 5px 15px 15px;
+   border-radius: .25em;
+   width: 25em;
+   min-height: 5em;
+   padding-bottom:.75em;
+   font-size: 2em;
+   color:$pal-seven;
+}
+
+.ledger-selector {
+   @include row;
+   justify-content: center;
+   text-align: center;
+   width:100%;
+}
+
+.selector-exist, .selector-new {
+   width: 50%;
+   background-color: $pal-five;
+   border-bottom: 2px solid $pal-four;
+   padding: .75em;
+}
+.selector-exist:hover, .selector-new:hover {
+   width: 50%;
+   background-color: $pal-four;
+   color: $pal-one;
+   padding: .75em;
+   border-color: $pal-one;
+}
+
+.selector-exist {
+   border-top-left-radius:.25em;
+}
+
+.selector-new {
+   border-top-right-radius:.25em;
+}
+
+.selected, .selected:hover {
+   background-color: $pal-six;
+   border-bottom: 2px solid $pal-two;
+   color: $pal-two;
+}
+
+
+
+.ledger-selector-input {
+   @include row;
+   background-color: $pal-five;
+   border: 3px solid $pal-four;
+   border-radius: .15em;
+   min-height: 3em;
+   width: 20em;
+   margin: .5em;
+}
+
+input {
+   font-size: 1em;
+   background-color: $pal-three;
+   border: 3px solid $pal-six;
+}
+
+select {
+   font-size: 1.05em;
+   background-color: $pal-three;
+   border: 3px solid $pal-six;
+}
+input:hover, input:focus, select:hover, select:focus {
+   border-color: $pal-one;
+}
+
+
+.ledger-selector-button {
+   height:2em;
+   width: 6em;
+   font-size:.75em;
+   border-radius: .25em;
+   background-color: $pal-five;
+   border: 3px solid $pal-four;
+   color: $pal-seven;
+}
+
+.ledger-selector-button:hover {
+   background-color: $pal-four;
+   border: 3px solid $pal-one;
+   color: $pal-one;
+}
+
+.error-box{
+   @include column;
+   position: absolute;
+   left: 33vw;
+   top: 19vh;
+   height: 5em;
+   width: 30em;
+   background-color: rgba(144, 30, 2, .75);
+   border: 3px solid  rgba(194, 40, 1, 0.65);
+   border-radius:.25em;
+   color: rgba(255, 255, 255, 0.8);
+}
+

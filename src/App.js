@@ -1,14 +1,17 @@
 import React from 'react';
-import './App.scss';
+import routes from "./routes"
+import './scss/App.scss';
 import LedgerView from "./Components/LedgerView";
+import LedgerSelection from "./Components/LedgerSelection";
 
 const App = ()  => {
-
   return (
-    <div>
-      <LedgerView />
+    <div className="page">
+      {/* <LedgerView />
+      <LedgerSelection /> */}
+        {routes}
     </div>
-  )
+  );
 }
 
 export default App;
