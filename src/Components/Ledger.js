@@ -15,14 +15,14 @@ const Ledger = (props) => {
       </div>
       <section className="ledger-line-container">
       <div className="ledger-line-title">
-               <div className="date-title">DATE</div>
-               <div className="vendor-title">VENDOR NAME</div>
-               <div className="trx-desc-title">TRX DESCRIPTION</div>
-               <div className="trx-type-title">TRX TYPE</div>
-               <div className="gl-title">GL ACCOUNT</div>
-               <div className="credit-title">CREDIT</div>
-               <div className="debit-title">DEBIT</div>
-               <div className="balance-title">BALANCE</div>
+               <h3 className="date-title">DATE</h3>
+               <h3 className="vendor-title">VENDOR NAME</h3>
+               <h3 className="trx-desc-title">TRX DESCRIPTION</h3>
+               <h3 className="trx-type-title">TRX TYPE</h3>
+               <h3 className="gl-title">GL ACCOUNT</h3>
+               <h3 className="credit-title">CREDIT</h3>
+               <h3 className="debit-title">DEBIT</h3>
+               <h3 className="balance-title">BALANCE</h3>
             </div>
          {ledgerEntries.map(el => ( 
             <div className ="ledger-line">
