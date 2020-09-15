@@ -4,7 +4,7 @@ module.exports = {
       const {id, year} = req.query,
             db = req.app.get("db"),
             ledgerId = await db.get_ledger_id(id, year);
-      db.query(`SELECT * FROM ledger`).then(ledger => {
+      db.query(`SELECT * FROM ledger_${ledgerId[0].ledger_id}`).then(ledger => {
             ledger.forEach(el => {
                el.ledger_date = `${el.ledger_date}`.substring(3,10)
             })
@@ -16,7 +16,6 @@ module.exports = {
       const {id, year} = req.params,
             db = req.app.get("db"),
             ledgerId = await db.add_ledger(id, year)
-            console.log(ledgerId)
       db.create_ledger(`ledger_${ledgerId[0].ledger_id}`)
       .then((ledger) => {
          res.status(200).send(ledger);
@@ -26,13 +25,10 @@ module.exports = {
    addLedgerLine: (req, res) => {
       const {ledgerId} = req.params,
          {date, vendorName, trxDescription, trxType, glAccount, credit, debit, note, journalRef} = req.body;
-         console.log(req.params, req.body)
       db = req.app.get("db");
       db.add_ledger_line(`ledger_${ledgerId}`, date, vendorName, trxDescription, trxType, glAccount, credit, debit, note, journalRef ).then((ledger) => {
          res.status(200).send(ledger);
-      }).catch(err => {
-         console.log(err)
-         res.status(500).send(err)});
+      }).catch(err => res.status(500).send(err));
    },
 
    updateLedgerLine: (req, res) => {
