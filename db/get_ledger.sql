@@ -1,0 +1,7 @@
+-- DO
+-- $$
+-- BEGIN
+-- EXECUTE format('SELECT * FROM %I', $1)
+-- END;
+-- $$ 
+-- LANGUAGE plpgsql;

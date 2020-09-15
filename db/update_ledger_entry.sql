@@ -1,4 +1,10 @@
-
-UPDATE $tableName
-SET date = $date, credit = $credit, debit = $debit, vendor_name =$vendorName, trx_description = $trxDescription, trx_type = $trxType, gl_account_id = $glAccount, note = $note, journal_ref = $journalRef
-WHERE ledger_id = $ledgerId AND ledger_line = $ledgerLine;
+DO
+$$
+BEGIN
+EXECUTE format('UPDATE %I 
+SET ledger_date = %L, vendor_name = %L, trx_description = %L, trx_type = %L, gl_account_id = %L, credit = %L, debit = %L, note = %L, journal_ref = %L
+WHERE ledger_line = %L',
+   $1, $2, $3, $4, $5, $6, $7, $8, $9, $10,$11 );
+END
+$$ 
+LANGUAGE plpgsql;

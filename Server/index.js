@@ -21,8 +21,10 @@ massive({
 // Endpoints
 
 app.get("/api/ledger/", ledgerCtrl.getLedger);
-app.post("/api/ledger/", ledgerCtrl.createLedger);
-app.post("/api/ledger/:id", ledgerCtrl.addLedgerLine);
-app.put("/api/ledger/:id/:line", ledgerCtrl.updateLedgerLine);
+app.post("/api/ledger/:id/:year", ledgerCtrl.createLedger);
+app.post("/api/ledger/:ledgerId", ledgerCtrl.addLedgerLine);
+app.put("/api/ledger/", ledgerCtrl.updateLedgerLine);
+app.delete("/api/ledger/", ledgerCtrl.deleteLedgerLine);
+app.delete("/api/ledger/:ledgerId", ledgerCtrl.deleteLedger);
 
 
