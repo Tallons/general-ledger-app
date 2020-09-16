@@ -6,11 +6,11 @@ import LedgerSelection from "./Components/LedgerSelection";
 
 const App = ()  => {
   return (
-    <div className="page">
+    <main className="page">
       {/* <LedgerView />
       <LedgerSelection /> */}
         {routes}
-    </div>
+    </main>
   );
 }
 

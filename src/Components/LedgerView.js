@@ -26,9 +26,9 @@ const LedgerView = (props) => {
    },[bankAccountId, ledgerYear]);
 
    const getLedger = () => {
-      axios.get(`/api/ledger/?id=${bankAccountId}&year=${ledgerYear}`).then( res => {
+      axios.get(`/api/ledger/${props.match.params.id}`).then( res => {
          console.log(res.data)
-         setLedgerEntries(res.data.entries);
+         setLedgerEntries(res.data);
       }).catch (err => console.log(err));
    },
 
@@ -45,7 +45,7 @@ const LedgerView = (props) => {
       }
    }
    console.log(props);
-   console.log(props.match.params.id);
+   // console.log(props.match.params.id);
    return (
      <div className="ledger-view-container">
        <section>
